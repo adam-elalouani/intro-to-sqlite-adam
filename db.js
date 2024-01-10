@@ -65,7 +65,7 @@ db.all(query, [id], (error, result) => {
 };
 
 const createnewuser = (req,res) => {
-const query = 
+
 }
 
 const updateusername = (req,res) => {

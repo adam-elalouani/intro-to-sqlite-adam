@@ -51,7 +51,7 @@ app.get("/user/:id", db.getUserById);
 
 // Get all users
 app.get('/users', getalluser)
-db.get('/users', getallUser)
+db.get('/users', getalluser)
 // Create a new user
 app.post()
 // Update a user's name, given an id
