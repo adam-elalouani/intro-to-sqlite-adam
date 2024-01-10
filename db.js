@@ -21,6 +21,8 @@ const getUserById = (request, response) => {
   // Parse the id to generate a SQLite query
   const id = parseInt(request.params.id);
   const query = `SELECT * FROM user WHERE id = ?`;
+  console.log(query);
+  console.log(id);
 
   // db.get will replace all ? in query sequentially with
   // items from the array passed as the second parameter
@@ -43,10 +45,45 @@ const getUserById = (request, response) => {
 
 // ----- FILL IN BELOW -----
 // Write and export the rest of the functions needed by index.js!
+const getalluser = (req,res) => {
+const query = 'SELECT * FROM user';
+
+db.all(query, [id], (error, result) => {
+  if (error) {
+    console.error(error.message);
+    response.status(400).json({ error: error.message });
+    return;
+  }
+  // If nothing is returned, then result will be undefined
+  if (result) {
+    response.json(result);
+  } else {
+    response.sendStatus(404);
+  }
+});
+
+};
+
+const createnewuser = (req,res) => {
+const query = 
+}
+
+const updateusername = (req,res) => {
+
+}
+
+const deleteuser = (req,res) => {
+
+}
 
 //#endregion Routes
 
 // This allows `index.js` to use functions defined in this file.
 module.exports = {
   getUserById,
+  getalluser,
+  createnewuser,
+  updateusername,
+  deleteuser,
+
 };
