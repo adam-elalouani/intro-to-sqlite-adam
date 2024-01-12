@@ -50,14 +50,15 @@ app.get("/user/:id", db.getUserById);
 // Write endpoints that allow a client to:
 
 // Get all users
+app.get('/users', db.getalluser)
 app.get('/users', getalluser)
 db.get('/users', getalluser)
 // Create a new user
-app.post()
+app.post('/users', db.createnewuser)
 // Update a user's name, given an id
-app.put()
+app.put('/users/:id', db.updateusername)
 // Delete a user by id
-app.delete()
+app.delete('/users/:id', db.deleteuser)
 //#endregion Database Routes
 
 //-----------------------------

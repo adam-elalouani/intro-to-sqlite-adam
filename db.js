@@ -65,16 +65,65 @@ db.all(query, [id], (error, result) => {
 };
 
 const createnewuser = (req,res) => {
+const{username, email} = req.body;
+const query = 'INSERT INTO user (username, email)';
 
-}
+db.run(query,[username,email], function (error){
+  if (error) {
+    console.error(error.message);
+    response.status(400).json({ error: error.message });
+    return;
+  }
+  // If nothing is returned, then result will be undefined
+  if (result) {
+    response.json(result);
+  } else {
+    response.sendStatus(404);
+  }
+  });
+};
+
+
+
 
 const updateusername = (req,res) => {
+  const id = parseInt(req.params.id);
+  const {username} = req.body;
 
-}
+  db.run(query,[username], function (error){
+    if (error) {
+      console.error(error.message);
+      response.status(400).json({ error: error.message });
+      return;
+    }
+    // If nothing is returned, then result will be undefined
+    if (result) {
+      response.json(result);
+    } else {
+      response.sendStatus(404);
+    }
+    });
+  };
 
 const deleteuser = (req,res) => {
+const id = parseInt(req.params.id);
+const query = 'DELETE FROM user WHERE id = ?';
 
-}
+
+  db.run(query,[id], function (error){
+    if (error) {
+      console.error(error.message);
+      response.status(400).json({ error: error.message });
+      return;
+    }
+    // If nothing is returned, then result will be undefined
+    if (result) {
+      response.json(result);
+    } else {
+      response.sendStatus(404);
+    }
+    });
+  };
 
 //#endregion Routes
 
